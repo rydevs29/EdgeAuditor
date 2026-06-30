@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EdgeAuditor | Web Security Analyzer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <i class="ph ph-shield-check"></i>
+            <span>EdgeAuditor</span>
+        </div>
+        <div class="nav-links">
+            <a href="#"><i class="ph ph-github-logo"></i> GitHub</a>
+            <a href="#"><i class="ph ph-file-code"></i> API Docs</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h1>Advanced Web Security & Header Analyzer</h1>
+            <p>Inspect security headers, DNS records, and routing configurations in real-time.</p>
+            
+            <form id="auditForm" class="search-box">
+                <i class="ph ph-globe search-icon"></i>
+                <input type="url" id="targetUrl" placeholder="https://example.com" required autocomplete="off">
+                <button type="submit" id="scanBtn">
+                    <i class="ph ph-scan"></i> Analyze
+                </button>
+            </form>
+            <div id="errorMessage" class="error-text hidden"></div>
+        </section>
+
+        <div id="loader" class="loader-container hidden">
+            <div class="spinner"></div>
+            <p id="loadingText">Establishing secure connection...</p>
+        </div>
+
+        <section id="resultsDashboard" class="dashboard hidden">
+            <div class="card overview-card">
+                <div class="card-header">
+                    <i class="ph ph-info"></i>
+                    <h2>Target Overview</h2>
+                </div>
+                <div class="card-body grid-2">
+                    <div class="data-group">
+                        <label>Target URL</label>
+                        <span id="resUrl" class="mono-text">-</span>
+                    </div>
+                    <div class="data-group">
+                        <label>Resolved IP (DNS)</label>
+                        <span id="resIp" class="mono-text">-</span>
+                    </div>
+                    <div class="data-group">
+                        <label>Protocol</label>
+                        <span id="resProtocol" class="badge badge-success">-</span>
+                    </div>
+                    <div class="data-group">
+                        <label>Response Time</label>
+                        <span id="resTime" class="mono-text">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-layout">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="ph ph-lock-key"></i>
+                        <h2>Security Headers</h2>
+                    </div>
+                    <div class="card-body">
+                        <ul class="header-list" id="securityHeadersList">
+                            </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <i class="ph ph-hard-drives"></i>
+                        <h2>Server & Routing</h2>
+                    </div>
+                    <div class="card-body">
+                        <ul class="header-list" id="serverInfoList">
+                            </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Powered by <strong>RifqyDev Ecosystem</strong> &copy; 2026</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
